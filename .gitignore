@@ -1,0 +1,51 @@
+# Virtual Environments
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code
+.vscode/
+
+# Logs
+*.log
+
+# Environment Variables
+.env
+.env.*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Build
+build/
+dist/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Data files (opcional)
+data/
+*.csv
+*.xlsx
+*.parquet
+
+# Models (opcional)
+models/
+*.pkl
+*.joblib
+
+# Streamlit
+.streamlit/secrets.toml
