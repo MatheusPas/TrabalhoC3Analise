@@ -32,7 +32,7 @@ Autentica o usuário com suas credenciais do Linux e retorna um token JWT válid
 **Body:**
 ```json
 {
-  "username": "matheus_root",
+  "username": "seu_user",
   "password": "sua_senha"
 }
 ```
@@ -42,7 +42,7 @@ Autentica o usuário com suas credenciais do Linux e retorna um token JWT válid
 {
   "access_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
   "token_type": "bearer",
-  "username": "matheus_root"
+  "username": "seu_user"
 }
 ```
 
