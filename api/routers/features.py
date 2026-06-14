@@ -73,3 +73,4 @@ def encode(
         "mapeamento": encoded,
         "amostra_encoded": sample.to_dict(orient="records")
     }
+
