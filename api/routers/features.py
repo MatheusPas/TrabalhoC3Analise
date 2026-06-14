@@ -74,3 +74,39 @@ def encode(
         "amostra_encoded": sample.to_dict(orient="records")
     }
 
+@router.get("/dataset-completo")
+def dataset_completo(
+    db: Session = Depends(get_db),
+    current_user: str = Depends(get_current_user)
+):
+    df = get_dataframe(db)
+
+    # 1. Novas features
+    df["house_age"] = 2024 - df["year_built"]
+    df["remod_age"] = 2024 - df["year_remod_add"]
+    df["total_bath"] = df["full_bath"] + (0.5 * df["half_bath"])
+    df["area_per_room"] = df["gr_liv_area"] / df["totrms_abvgrd"].replace(0, 1)
+    df["price_category"] = (df["sale_price"] >= df["sale_price"].median()).astype(int)
+
+    # 2. Cópia após novas features
+    df_scaled = df.copy()
+
+    # 3. Normalização
+    scaler = StandardScaler()
+    numeric_cols = ["lot_area", "gr_liv_area", "garage_area", "overall_qual", "overall_cond"]
+    df_scaled[numeric_cols] = scaler.fit_transform(df[numeric_cols])
+
+    # 4. Encoding
+    le = LabelEncoder()
+    for col in ["ms_zoning", "street", "neighborhood"]:
+        df_scaled[col + "_encoded"] = le.fit_transform(df[col].astype(str))
+
+    # 5. Remove categóricas originais
+    df_scaled = df_scaled.drop(columns=["ms_zoning", "street", "neighborhood"])
+
+    return {
+        "usuario": current_user,
+        "total": len(df),
+        "dataset": df.to_dict(orient="records"),
+        "dataset_tratado": df_scaled.to_dict(orient="records")
+    }
