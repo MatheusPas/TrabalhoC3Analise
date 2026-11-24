@@ -15,6 +15,15 @@ Análise completa do dataset de preços de casas nos Estados Unidos disponível 
 **Registros:** 1.460 casas  
 **Objetivo:** Prever o preço de venda de casas com base em suas características.
 
+## Arquitetura do Projeto
+
+O projeto é dividido em dois repositórios que funcionam juntos:
+
+| Parte | Repositório | O que contém |
+|---|---|---|
+| **Servidor (API)** | este repositório | API REST em FastAPI com autenticação JWT, banco PostgreSQL e endpoints de EDA, feature engineering, regressão, classificação, clusterização e PCA |
+| **Aplicação e notebooks** | [NotebooksC3Analise](https://github.com/MatheusPas/NotebooksC3Analise) | Notebooks Jupyter de cada etapa da análise e dashboard em Streamlit que consome esta API |
+
 ---
 
 ## Equipe
