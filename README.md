@@ -87,6 +87,8 @@ TrabalhoC3Analise/
 
 ## Como Conectar à API
 
+> **Observação:** o endereço do servidor e as credenciais que aparecem neste repositório eram do ambiente de avaliação da disciplina e precisavam estar no código para a correção. Com o fim do projeto, o servidor foi desligado e esses acessos estão desativados.
+
 ```python
 import requests
 import pandas as pd
